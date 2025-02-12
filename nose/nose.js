@@ -8,9 +8,6 @@ let time = 30;
 var s = " ";
 
 function setup() {
-  createP("Using your camera and you're nose, try to catch the blue circles!");
-  createP("Get 10 points to advance to each level!");
-  createP("There are 5 levels altogether!");
   createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.size(640, 480);
