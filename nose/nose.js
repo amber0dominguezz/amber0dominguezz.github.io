@@ -1,17 +1,16 @@
-let x1,y1;
+let x1, y1;
 let lev = 1;
 let video;
 let poseNet;
 let pose;
-let c1, c2, c3;
 let score = 0;
 let time = 30;
 var s = " ";
 
 function setup() {
-  createP("call");
-  createP("call");
-  createP("call");
+  createP("A red dot will appear on your nose. Get it in the big blue circles to get a point.");
+  createP("Get 10 points or over in each level to win!");
+  createP("There are 4 levels altogether!");
   createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.size(640, 480);
@@ -21,12 +20,10 @@ function setup() {
   draw_circle1();
 }
 
-
 function draw_circle1() {
-  x1 = floor(random(50,350));
-  y1 = floor(random(50,350));
+  x1 = floor(random(50, 350));
+  y1 = floor(random(50, 350));
 }
-
 
 function gotPoses(poses) {
   if (poses.length > 0) {
@@ -41,17 +38,16 @@ function modelReady() {
 
 function draw() {
   background(220);
-  image(video, 0, 0, width, height); // Draw the video feed
   push();
-  translate(width,0);
+  translate(width, 0);
   scale(-1, 1);
-  image(capture, 0, 0, 320, 240);
+  image(video, 0, 0, width, height); // Draw the video feed
   pop();
-}
+
   if (pose) {
     noStroke();
     fill(255, 0, 0);
-    let noseX = pose.nose.x;
+    let noseX = width - pose.nose.x; // Invert the x-coordinate
     let noseY = pose.nose.y;
     ellipse(noseX, noseY, 20, 20); // Draw red dot on nose
 
@@ -70,7 +66,7 @@ function draw() {
   fill(0);
   textSize(32);
   text("Score: " + score, 10, 30);
-
+}
 
 function timer() {
   if (time > 0) {
@@ -92,33 +88,6 @@ function gameOver1() {
     }
     if (lev == 2) {
       s = "Level 3!!!";
-      setTimeout(()=>{
-        score = 0;
-        background('rgba(0,0,0,1)');
-        time = 20;
-        lev = 3;
-      },2000)
-    }
-    if (lev == 3) {
-      s = "Level 4!!!";
-      setTimeout(()=>{
-        score = 0;
-        background('rgba(0,0,0,1)');
-        time = 20;
-        lev = 4;
-      },2000)
-    }
-    if (lev == 4) {
-      s = "Well done!!!";
-      noLoop();
     }
   }
-  if (lev == 5) {
-    text(s,310,200);
-    noLoop();
-  }
-  background(255,255,0);
-  textSize(30);
-  fill('rgb(0,0,0)');
-  text(s,310,200);
 }
