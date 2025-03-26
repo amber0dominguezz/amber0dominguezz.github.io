@@ -34,6 +34,12 @@
       text-align: center;
       margin: 20px 0; /* Optional: Add some margin for spacing */
     }
+    .iframe-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0; /* Optional: Add some margin for spacing */
+    }
   </style>
 </head>
 <body>
@@ -82,11 +88,14 @@
 
 <h1 class="center-text">Interactive Game</h1>
 
-<iframe src="ballgame/index.html" style="height:800px;width:1200px;border:none;" title="iframe game"></iframe>
+<div class="iframe-container">
+  <iframe src="ballgame/index.html" style="height:800px;width:1200px;border:none;" title="iframe game"></iframe>
+</div>
 
 <p class="center-text">Heres my code!</p>
 
-<pre class="center-text">var ballx = 400;
+<pre class="center-text">
+var ballx = 400;
 var bally = 300;
 var ballSize = 70;
 var score = 0;
@@ -229,3 +238,6 @@ function levelFive(){
   ellipse(ballx, bally, ballSize, ballSize);
   image(capture, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
 } // end level five  </pre>
+
+</body>
+</html>
