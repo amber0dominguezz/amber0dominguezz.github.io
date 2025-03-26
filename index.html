@@ -13,9 +13,24 @@
 <style>
   body {
       font-family: 'Times New Roman', serif;
+      color: white; /* Make all body text white */
     }
     .navbar-custom {
-      background-color: #566e56 !important;
+      background-color: #566e56 !important; /* Custom green color */
+    }
+    .navbar-custom .navbar-nav .nav-link,
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-toggler-icon {
+      color: white !important; /* Make navbar text and icon white */
+    }
+    .dropdown-menu {
+      background-color: #566e56; /* Match dropdown background with navbar */
+    }
+    .dropdown-item {
+      color: white !important; /* Make dropdown items text white */
+    }
+    .dropdown-item:hover {
+      background-color: #566e56; /* Optional: Change background on hover */
     }
 </style>
 
