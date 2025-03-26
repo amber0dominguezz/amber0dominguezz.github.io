@@ -35,12 +35,17 @@
       margin: 20px 0; 
     }
     .iframe-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 20px 0; 
+      position: relative; /* Allows positioning of the iframe within this container */
+      width: 100%; /* Full width of the container */
+      height: 800px; /* Set a height for the container */
+    }
+    .iframe-position {
+      position: absolute; 
+      top: 50px; /* Adjust the top position in pixels */
+      left: 50px; /* Adjust the left position in pixels */
+      width: 1200px; /* Set the width of the iframe */
+      height: 800px; /* Set the height of the iframe */
+      border: none; 
     }
   </style>
 </head>
