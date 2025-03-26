@@ -9,20 +9,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
+     body {
       font-family: 'Times New Roman', serif;
+      color: white; /* Make all body text white */
+      background-color: #000000; /* Set background color to black */
     }
-
-    .about-container {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
+    .navbar-custom {
+      background-color: #566e56 !important; /* Custom green color */
     }
-    .about-text {
-      flex: 1;
+    .navbar-custom .navbar-nav .nav-link,
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-toggler-icon {
+      color: white !important; /* Make navbar text and icon white */
     }
-    .about-image {
-      flex: 0 0 auto;
+    .dropdown-menu {
+      background-color: #566e56; /* Match dropdown background with navbar */
+    }
+    .dropdown-item {
+      color: white !important; /* Make dropdown items text white */
+    }
+    .dropdown-item:hover {
+      background-color: #566e56; /* Optional: Change background on hover */
     }
   </style>
 </head>

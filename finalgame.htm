@@ -8,8 +8,27 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     body {
-        font-family: 'Times New Roman', serif;
-      }
+      font-family: 'Times New Roman', serif;
+      color: white; /* Make all body text white */
+      background-color: #000000; /* Set background color to black */
+    }
+    .navbar-custom {
+      background-color: #566e56 !important; /* Custom green color */
+    }
+    .navbar-custom .navbar-nav .nav-link,
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-toggler-icon {
+      color: white !important; /* Make navbar text and icon white */
+    }
+    .dropdown-menu {
+      background-color: #566e56; /* Match dropdown background with navbar */
+    }
+    .dropdown-item {
+      color: white !important; /* Make dropdown items text white */
+    }
+    .dropdown-item:hover {
+      background-color: #566e56; /* Optional: Change background on hover */
+    }
   </style> 
 </head>
 <body>
