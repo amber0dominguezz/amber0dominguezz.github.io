@@ -35,17 +35,15 @@
       margin: 20px 0; 
     }
     .iframe-container {
-      position: relative; 
-      width: 100%; 
-      height: 800px; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 800px; /* Set a height for the container */
     }
     .iframe-position {
-      position: absolute; 
-      top: 50px; /* Adjust the top position in pixels */
-      left: 1000px; /* Adjust the left position in pixels */
       width: 1200px; /* Set the width of the iframe */
       height: 800px; /* Set the height of the iframe */
-      border: none; 
+      border: none; /* Remove the border */
     }
   </style>
 </head>
@@ -96,7 +94,7 @@
 <h1 class="center-text">Interactive Game</h1>
 
 <div class="iframe-container">
-  <iframe src="ballgame/index.html" style="height:800px;width:1200px;margin: 0 auto;" title="iframe game"></iframe>
+  <iframe src="ballgame/index.html" style="height:800px;width:1200px;" title="iframe game"></iframe>
 </div>
 
 <p class="center-text">Heres my code!</p>
