@@ -14,19 +14,16 @@
       background-size: cover; 
     }
     .navbar-custom {
-      background-color: #2f0046 !important; 
-    }
-    .navbar-custom .navbar-nav .nav-link,
-    .navbar-custom .navbar-brand,
-    .navbar-custom .navbar-toggler-icon {
-      color: white !important; 
-    }
-    .navbar-custom {
     background-color: #2f0046 !important; 
     position: fixed; 
     top: 0; 
     width: 100%; 
     z-index: 1030; 
+    }
+    .navbar-custom .navbar-nav .nav-link,
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-toggler-icon {
+      color: white !important; 
     }
     .dropdown-menu {
       background-color: #2f0046; 
@@ -39,8 +36,11 @@
     }
     .center-text {
       text-align: center;
-      margin: 20px 0; 
+      margin: 10px 0; 
     }
+    .content {
+    margin-top: 70px; 
+  }
   </style>
 </head>
 <body>
@@ -87,13 +87,18 @@
       </div>
     </nav>
 
+    <div class="content">
+
 <h1 class="center-text">Nose Chase Game</h1>
 
-<p>This is the final project for my Art 74 class. I decided to make a little video game that uses interaction through video. I used P5.js coding and the application VS Code.</p>
+<p style="font-size:130%;">This is the final project for my Art 74 class. I decided to make a little video game that uses interaction through video. I used P5.js coding and the application VS Code.</p>
+
 
 <iframe src="nose/index.html" style="height:800px;width:1200px;border:none;" title="iframe game"></iframe>
 
 <p>Here is the current code.</p>
+
+</div>
 
 <pre> 
   let x1, y1;
