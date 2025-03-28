@@ -92,6 +92,7 @@
   <div class="container-fluid">
     <!-- Sidebar Navigation -->
     <div class="sidenav">
+      <a href="index.html">Home</a>
       <a href="aboutme.htm">About Me. </a>
       <a href="glitch.htm">Glitch</a>
       <a href="mememashup.htm">Meme Mashup</a>
@@ -265,6 +266,17 @@ function levelFive(){
   ellipse(ballx, bally, ballSize, ballSize);
   image(capture, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize);
 } // end level five  </pre>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownBtn = document.querySelector(".dropdown-btn");
+    const dropdownContainer = document.querySelector(".dropdown-container");
 
+    dropdownBtn.addEventListener("click", function () {
+      // Toggle the visibility of the dropdown container
+      dropdownContainer.style.display =
+        dropdownContainer.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>
 </body>
 </html>
