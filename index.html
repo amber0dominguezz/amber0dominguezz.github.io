@@ -124,5 +124,17 @@
       <p class="center-text" style="font-size:110%;">Growing up, I was always obsessed with video games and the different kinds there were. My favorites were always franchises such as The Walking Dead, Uncharted, Super Mario, and Legend of Zelda. They offered me a new perspective of games compared to the first person shooters my brother always played. This is what began my want to learn more about games and code. During my time taking classes that taught me the basic coding languages, I fell in love with its difficulty and promise of needing good problem solving skills. While I had my fair share of roadblocks while learning, I also loved how I was still able to figure out my issues in the end.</p>
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownBtn = document.querySelector(".dropdown-btn");
+      const dropdownContainer = document.querySelector(".dropdown-container");
+
+      dropdownBtn.addEventListener("click", function () {
+        // Toggle the visibility of the dropdown container
+        dropdownContainer.style.display =
+          dropdownContainer.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
 </body>
 </html>
