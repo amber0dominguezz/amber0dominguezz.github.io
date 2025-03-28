@@ -11,65 +11,118 @@
 	
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-     body {
-      font-family: 'Times New Roman', serif;
-      color: white; 
-      background: url('images/back.png') no-repeat center center fixed; 
-      background-size: cover; 
-    }
-   .navbar-custom {
-    background-color: #2f0046 !important; 
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    z-index: 1030; 
-    }
-    .navbar-custom {
-      background-color: #2f0046 !important; 
-    }
-    .navbar-custom .navbar-nav .nav-link,
-    .navbar-custom .navbar-brand,
-    .navbar-custom .navbar-toggler-icon {
-      color: white !important; 
-    }
-    .dropdown-menu {
-      background-color: #2f0046; 
-    }
-    .dropdown-item {
-      color: white !important; 
-    }
-    .dropdown-item:hover {
-      background-color: #2f0046; 
-    }
-    .center-text {
-      text-align: center;
-      margin: 10px 0; 
-    }
-    .content {
-    margin-top: 70px; /* Add margin to prevent the header from being hidden behind the navbar */
-    padding: 20px; /* Add padding for better spacing */
-    border-left: 10px solid #2f0046; /* Left border */
-    border-right: 10px solid #2f0046; /* Right border */
+  body {
+    font-family: 'Times New Roman', serif;
+    color: white; 
+    background: url('images/back.png') no-repeat center center fixed; 
+    background-size: cover; 
   }
-  </style>
+
+  /* Fixed sidenav, full height */
+  .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2b0334 !important; /* Force the background color */
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .dropdown-container {
+    display: none; /* Hide the dropdown by default */
+    background-color: #2b0334; /* Match the sidebar background */
+    padding-left: 16px; /* Indent dropdown links */
+  }
+
+  .dropdown-container a {
+    padding: 6px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+  }
+
+  .dropdown-container a:hover {
+    color: #f1f1f1;
+  }
+
+  .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  .content {
+    margin-top: 70px; /* Add margin to prevent the header from being hidden behind the navbar */
+    margin-left: 220px; /* Ensure content does not overlap with the sidebar */
+  }
+</style>
 </head>
 <body>
-<div class="container-fluid">
-  <nav class="navbar navbar-expand-sm navbar-custom navbar-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="https://amber0dominguezz.github.io/">AD</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        </div>
+  <div class="container-fluid">
+    <!-- Sidebar Navigation -->
+    <div class="sidenav">
+      <a href="aboutme.htm">About Me. </a>
+      <a href="glitch.htm">Glitch</a>
+      <a href="mememashup.htm">Meme Mashup</a>
+      <a href="minecraft.htm">3D Print & Paint</a>
+      <a href="netart.htm">Net Art</a>
+      <a href="DIYphotoshop.htm">DIY Photoshop</a>
+      <a href="interactgame.htm">Interactive Game</a>
+      <a href="finalgame.htm">Final Game</a>
+      <button class="dropdown-btn">Videos
+        <span style="float: right;">&#9660;</span> <!-- Downward arrow -->
+      </button>
+      <div class="dropdown-container">
+        <a href="video.html">Video "Identity"</a>
+        <a href="video2.html">Video "Looping"</a>
+        <a href="video3.html">Video "Interaction"</a>
+        <a href="video4.html">Video "Split"</a>
+        <a href="video5.html">Video "Noise"</a>
       </div>
-    </nav>
-  <div class="content">
-   <h1 class="center-text">~ Hello and Welcome ~</h1>
-   <h2 class="center-text" style="font-size:120%;">Artist Statement</h2>
-   <p class="center-text" style="font-size:110%;">Growing up, I was always obsessed with video games and the different kinds there were. My favorites were always franchises such as The Walking Dead, Uncharted, Super Mario, and Legend of Zelda. They offered me a new perspective of games compared to the first person shooters my brother always played. This is what began my want to learn more about games and code. During my time taking classes that taught me the basic coding languages, I fell in love with its difficulty and promise of needing good problem solving skills. While I had my fair share of roadblocks while learning, I also loved how I was still able to figure out my issues in the end. </p>
-  </div>
-</div>
+    </div>
 
+
+    <!-- Main Content -->
+    <div class="content">
+      <h1 class="center-text">~ Hello and Welcome ~</h1>
+      <h2 class="center-text" style="font-size:120%;">Artist Statement</h2>
+      <p class="center-text" style="font-size:110%;">Growing up, I was always obsessed with video games and the different kinds there were. My favorites were always franchises such as The Walking Dead, Uncharted, Super Mario, and Legend of Zelda. They offered me a new perspective of games compared to the first person shooters my brother always played. This is what began my want to learn more about games and code. During my time taking classes that taught me the basic coding languages, I fell in love with its difficulty and promise of needing good problem solving skills. While I had my fair share of roadblocks while learning, I also loved how I was still able to figure out my issues in the end.</p>
+    </div>
+  </div>
 </body>
-<html>
+</html>
