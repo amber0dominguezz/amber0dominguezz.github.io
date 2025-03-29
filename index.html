@@ -10,9 +10,10 @@
     <meta charset="utf-8">
 	
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet'>
 <style>
   body {
-    font-family: 'Times New Roman', serif;
+    font-family: 'Baumans';font-size: 22px;
     color: white; 
     background: url('images/back1.png') no-repeat center center fixed; 
     background-size: cover; 
@@ -90,6 +91,20 @@
     margin-top: 30px; /* Add margin to prevent the header from being hidden behind the navbar */
     margin-left: 220px; /* Ensure content does not overlap with the sidebar */
   }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between grid items */
+    margin-top: 20px; /* Add spacing above the grid */
+  }
+
+  .image-grid img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+  }
 </style>
 </head>
 <body>
@@ -97,32 +112,28 @@
     <!-- Sidebar Navigation -->
     <div class="sidenav">
       <a href="index.html">Home</a>
-      <a href="aboutme.htm">About Me. </a>
-      <a href="glitch.htm">Glitch</a>
-      <a href="mememashup.htm">Meme Mashup</a>
-      <a href="minecraft.htm">3D Print & Paint</a>
-      <a href="netart.htm">Net Art</a>
-      <a href="DIYphotoshop.htm">DIY Photoshop</a>
-      <a href="interactgame.htm">Interactive Game</a>
-      <a href="finalgame.htm">Final Game</a>
-      <button class="dropdown-btn">Videos
-        <span style="float: right;">&#9660;</span> <!-- Downward arrow -->
-      </button>
-      <div class="dropdown-container">
-        <a href="video.html">Video "Identity"</a>
-        <a href="video2.html">Video "Looping"</a>
-        <a href="video3.html">Video "Interaction"</a>
-        <a href="video4.html">Video "Split"</a>
-        <a href="video5.html">Video "Noise"</a>
+      <a href="aboutme.htm">Artist Statement</a>
+      <a href="mememashup.htm">Contact</a>
+      
       </div>
     </div>
 
 
     <!-- Main Content -->
     <div class="content">
-      <h1 class="center-text">~ Hello and Welcome ~</h1>
-      <h2 class="center-text" style="font-size:120%;">Artist Statement</h2>
-      <p class="center-text" style="font-size:110%;">Growing up, I was always obsessed with video games and the different kinds there were. My favorites were always franchises such as The Walking Dead, Uncharted, Super Mario, and Legend of Zelda. They offered me a new perspective of games compared to the first person shooters my brother always played. This is what began my want to learn more about games and code. During my time taking classes that taught me the basic coding languages, I fell in love with its difficulty and promise of needing good problem solving skills. While I had my fair share of roadblocks while learning, I also loved how I was still able to figure out my issues in the end.</p>
+      <h1 class="center-text">Amber Dominguez Penaloza</h1>
+      <div class="image-grid">
+        <a href="glitch.htm"><img src="images/3tbh.png" alt="Image 1"></a>
+        <a href="minecraft.htm"><img src="images/printphoto.png" alt="Image 2"></a>
+        <a href="DIYphotoshop.htm"><img src="images/hellokitty.jpg" alt="Image 3"></a>
+        <a href="mememashup.htm"><img src="images/image4.jpg" alt="Image 4"></a>
+        <a href="finalgame.htm"><img src="images/image5.jpg" alt="Image 5"></a>
+        <a href="video.html"><img src="images/image6.jpg" alt="Image 6"></a>
+        <a href="video2.html"><img src="images/image6.jpg" alt="Image 7"></a>
+        <a href="video3.html"><img src="images/image6.jpg" alt="Image 8"></a>
+        <a href="video4.html"><img src="images/image6.jpg" alt="Image 9"></a>
+        <a href="video5.html"><img src="images/image6.jpg" alt="Image 10"></a>
+      </div>
     </div>
   </div>
   <script>
