@@ -1,14 +1,14 @@
 let x1, y1;
-let lev = 1; // Current level
+let lev = 1; 
 let video;
 let poseNet;
 let pose;
 let score = 0;
-let time = 30; // Time for the current level
-let targetSize = 50; // Size of the target circle
-let levelUpScore = 5; // Score needed to level up (changed to 5)
+let time = 30; 
+let targetSize = 50; 
 let gameOverFlag = false;
 let tryAgainButton; // Declare the button
+let levelUpScore = 5; // Score needed to level up
 
 function setup() {
   createCanvas(640, 480);
@@ -39,6 +39,11 @@ function modelReady() {
 function draw() {
   if (gameOverFlag) {
     gameOverScreen();
+    return;
+  }
+
+  if (lev > 4) {
+    youWonScreen(); // Show the "You Won!" page after Level 4
     return;
   }
 
@@ -139,6 +144,29 @@ function gameOverScreen() {
   }
 }
 
+function youWonScreen() {
+  background(0, 255, 0); // Green background for the "You Won!" page
+  fill(255);
+  textSize(48);
+  textAlign(CENTER, CENTER);
+  text("You Won!", width / 2, height / 2 - 50);
+  textSize(32);
+  text("Congratulations on completing all levels!", width / 2, height / 2);
+
+  // Create the "New Round?" button
+  if (!tryAgainButton) {
+    tryAgainButton = createButton("New Round?");
+    tryAgainButton.position((width / 2) - 60, (height / 2) + 100); // Center the button
+    tryAgainButton.style("font-size", "20px"); // Optional: Style the button
+    tryAgainButton.style("padding", "10px 20px"); // Optional: Add padding
+    tryAgainButton.style("background-color", "#007BFF"); // Optional: Add background color
+    tryAgainButton.style("color", "white"); // Optional: Add text color
+    tryAgainButton.style("border", "none"); // Optional: Remove border
+    tryAgainButton.style("border-radius", "5px"); // Optional: Add rounded corners
+    tryAgainButton.mousePressed(resetGame); // Attach the reset function
+  }
+}
+
 function resetGame() {
   // Reset all game variables
   lev = 1;
@@ -148,7 +176,7 @@ function resetGame() {
   levelUpScore = 5;
   gameOverFlag = false;
 
-  // Remove the "Try Again" button
+  // Remove the "New Round?" or "Try Again" button
   if (tryAgainButton) {
     tryAgainButton.remove();
     tryAgainButton = null;
