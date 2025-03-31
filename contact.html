@@ -180,17 +180,18 @@
         <a href="aboutme.htm">Artist Statement</a>
         <a href="contact.html">Contact</a>
       </div>
-    <h3>Contact Me</h3>
+    <h3 style="font-size:130%;">Contact Me</h3>
 
 <div class="container">
-  <form action="/action_page.php">
-    <label for="fname">First Name</label>
+    <form action="https://api.web3forms.com/submit" method="POST">
+    <label for="fname">Full Name</label>
+    <input type="hidden" name="access_key" value="21ce2261-81ed-4b01-ab3e-384d56877cc2">
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <label for="lname">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your email..">
 
-    <label for="subject">Subject</label>
+    <label for="subject">Message</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
