@@ -105,6 +105,32 @@
     border-radius: 10px; /* Optional: Add rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
   }
+
+  .categories {
+    margin-top: 20px;
+  }
+
+  .category {
+    margin-bottom: 40px;
+  }
+
+  .category h2 {
+    font-size: 24px;
+    color: #f1f1f1;
+  }
+
+  .image-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .image-column img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 </style>
 </head>
 <body>
@@ -114,25 +140,37 @@
       <a href="index.html">Home</a>
       <a href="aboutme.htm">Artist Statement</a>
       <a href="mememashup.htm">Contact</a>
-      
-      </div>
     </div>
-
 
     <!-- Main Content -->
     <div class="content">
       <h1 class="center-text">Amber Dominguez Penaloza</h1>
-      <div class="image-grid">
-        <a href="glitch.htm"><img src="images/2.JPG" alt"glitch"></a>
-        <a href="minecraft.htm"><img src="images/3dprint1.jpeg" alt="minecraft"></a>
-        <a href="DIYphotoshop.htm"><img src="images/hellokitty.jpg" alt="photoshop"></a>
-        <a href="mememashup.htm"><img src="images/meme.png" alt="mem"></a>
-        <a href="finalgame.htm"><img src="images/image5.jpg" alt="Image 5"></a>
-        <a href="video.html"><img src="images/image6.jpg" alt="Image 6"></a>
-        <a href="video2.html"><img src="images/image6.jpg" alt="Image 7"></a>
-        <a href="video3.html"><img src="images/image6.jpg" alt="Image 8"></a>
-        <a href="video4.html"><img src="images/image6.jpg" alt="Image 9"></a>
-        <a href="video5.html"><img src="images/image6.jpg" alt="Image 10"></a>
+
+      <!-- Categories -->
+      <div class="categories">
+        <!-- Category 1 -->
+        <div class="category">
+          <h2>DMA Pieces</h2>
+          <div class="image-column">
+            <a href="glitch.htm"><img src="images/2.JPG" alt="glitch" width="200" height="150"></a>
+            <a href="minecraft.htm"><img src="images/3dprint1.jpeg" alt="minecraft" width="200" height="150"></a>
+            <a href="DIYphotoshop.htm"><img src="images/hellokitty.jpg" alt="photoshop" width="200" height="150"></a>
+            <a href="mememashup.htm"><img src="images/meme.png" alt="meme" width="200" height="150"></a>
+            <a href="finalgame.htm"><img src="images/ball_chase2.jpg" alt="ballgame" width="200" height="150"></a>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category">
+          <h2>Video Pieces</h2>
+          <div class="image-column">
+            <a href="video.html"><img src="images/video1.jpg" alt="video 1" width="200" height="150"></a>
+            <a href="video2.html"><img src="images/video2.jpg" alt="video 2" width="200" height="150"></a>
+            <a href="video3.html"><img src="images/video3.jpg" alt="video 3" width="200" height="150"></a>
+            <a href="video4.html"><img src="images/video4.jpg" alt="video 4" width="200" height="150"></a>
+            <a href="video5.html"><img src="images/video5.jpg" alt="video 5" width="200" height="150"></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
