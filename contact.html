@@ -131,8 +131,71 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+
+  form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 15px; /* Add spacing between form elements */
+    max-width: 400px; /* Optional: Limit the form width */
+    margin-left: 0; /* Align the form to the left */
+  }
+
+  label {
+    font-size: 18px; /* Optional: Adjust label font size */
+    margin-bottom: 5px; /* Add spacing below labels */
+  }
+
+  input[type="text"], select, textarea {
+    width: 100%; /* Make inputs take the full width of the form container */
+    padding: 10px; /* Add padding for better usability */
+    font-size: 16px; /* Adjust font size */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+
+  textarea {
+    resize: vertical; /* Allow vertical resizing only */
+  }
+
+  input[type="submit"] {
+    background-color: #2b0334; /* Set the background color to #2b0334 */
+    color: white; /* Keep the text color white for contrast */
+    padding: 10px 20px; /* Add padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 18px; /* Adjust font size */
+  }
+
+  input[type="submit"]:hover {
+    background-color: #3c0445; /* Slightly darker shade for hover effect */
+  }
 </style>
 </head>
 <body>
+    <div class="content">
+    <div class="sidenav">
+        <a href="index.html">Home</a>
+        <a href="aboutme.htm">Artist Statement</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    <h3>Contact Me</h3>
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</div>
 </body>
 </html>
