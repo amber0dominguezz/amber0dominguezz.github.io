@@ -167,7 +167,6 @@ function youWonScreen() {
 }
 
 function resetGame() {
-  // Reset all game variables
   lev = 1;
   score = 0;
   time = 30;
@@ -175,15 +174,13 @@ function resetGame() {
   levelUpScore = 5;
   gameOverFlag = false;
 
-  // Remove the "New Round?" button
   if (tryAgainButton) {
     tryAgainButton.remove();
     tryAgainButton = null;
   }
 
-  // Clear the canvas and reset text alignment and size
   clear();
-  createCanvas(640, 480); // Recreate the canvas to ensure it is properly reset
-  textAlign(LEFT, BASELINE); // Reset text alignment to default
-  textSize(32); // Reset text size to default for the game
+  createCanvas(640, 480);
+  textAlign(LEFT, BASELINE);
+  textSize(32); 
 }
