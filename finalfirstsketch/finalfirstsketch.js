@@ -48,7 +48,7 @@ function newkeyChoice(toolChoice) { //toolchoice is the key that was pressed
     
   } else if (toolChoice == '3') { // third tool
     image(pkitty, mouseX-300, mouseY-270, 600, 600);
-   5
+   
   } else if (toolChoice == '4') {
     image(sjsukitty, mouseX-300, mouseY-270, 600, 600);
     
