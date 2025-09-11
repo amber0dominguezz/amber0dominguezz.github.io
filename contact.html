@@ -11,169 +11,9 @@
 	
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet'>
-<style>
-  body {
-    font-family: 'Baumans';font-size: 22px;
-    color: white; 
-    background: url('images/back1.png') no-repeat center center fixed; 
-    background-size: cover; 
-  }
-
-  /* Fixed sidenav, full height */
-  .sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #2b0334 !important; /* Force the background color */
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-
-  /* Style the sidenav links and the dropdown button */
-  .sidenav a, .dropdown-btn {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-  }
-
-  /* On mouse-over */
-  .sidenav a:hover, .dropdown-btn:hover {
-    color: #f1f1f1;
-  }
-
-  .dropdown-btn {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    background: none;
-    border: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .dropdown-container {
-    display: none; /* Hide the dropdown by default */
-    background-color: #2b0334; /* Match the sidebar background */
-    padding-left: 16px; /* Indent dropdown links */
-  }
-
-  .dropdown-container a {
-    padding: 6px 8px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #818181;
-    display: block;
-  }
-
-  .dropdown-container a:hover {
-    color: #f1f1f1;
-  }
-
-  .dropdown-btn:hover {
-    color: #f1f1f1;
-  }
-
-  .content {
-    margin-top: 30px; /* Add margin to prevent the header from being hidden behind the navbar */
-    margin-left: 220px; /* Ensure content does not overlap with the sidebar */
-  }
-
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-    gap: 20px; /* Space between grid items */
-    margin-top: 20px; /* Add spacing above the grid */
-  }
-
-  .image-grid img {
-    width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Optional: Add rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-  }
-
-  .categories {
-    margin-top: 20px;
-  }
-
-  .category {
-    margin-bottom: 40px;
-  }
-
-  .category h2 {
-    font-size: 24px;
-    color: #f1f1f1;
-  }
-
-  .image-column {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .image-column img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  form {
-    display: flex;
-    flex-direction: column; /* Stack form elements vertically */
-    gap: 15px; /* Add spacing between form elements */
-    max-width: 400px; /* Optional: Limit the form width */
-    margin-left: 0; /* Align the form to the left */
-  }
-
-  label {
-    font-size: 18px; /* Optional: Adjust label font size */
-    margin-bottom: 5px; /* Add spacing below labels */
-  }
-
-  input[type="text"], select, textarea {
-    width: 100%; /* Make inputs take the full width of the form container */
-    padding: 10px; /* Add padding for better usability */
-    font-size: 16px; /* Adjust font size */
-    border: 1px solid #ccc; /* Add a border */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-  }
-
-  textarea {
-    resize: vertical; /* Allow vertical resizing only */
-  }
-
-  input[type="submit"] {
-    background-color: #2b0334; /* Set the background color to #2b0334 */
-    color: white; /* Keep the text color white for contrast */
-    padding: 10px 20px; /* Add padding */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    font-size: 18px; /* Adjust font size */
-  }
-
-  input[type="submit"]:hover {
-    background-color: #3c0445; /* Slightly darker shade for hover effect */
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-baumans">
     <div class="content">
     <div class="sidenav">
         <a href="index.html">Home</a>
@@ -182,20 +22,20 @@
       </div>
     <h3 style="font-size:130%;">Contact Me</h3>
 
-<div class="container">
-    <form action="https://api.web3forms.com/submit" method="POST">
-    <label for="fname">Full Name</label>
-    <input type="hidden" name="access_key" value="21ce2261-81ed-4b01-ab3e-384d56877cc2">
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-    <label for="lname">Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email..">
-
-    <label for="subject">Message</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-    <input type="submit" value="Submit">
-  </form>
+    <div class="container">
+      <form class="ad-form" action="https://api.web3forms.com/submit" method="POST">
+      <label class="ad-label" for="fname">Full Name</label>
+      <input type="hidden" name="access_key" value="21ce2261-81ed-4b01-ab3e-384d56877cc2">
+      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  
+      <label class="ad-label" for="lname">Email</label>
+      <input type="text" id="email" name="email" placeholder="Your email..">
+  
+      <label class="ad-label" for="subject">Message</label>
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+  
+      <input class="ad-submit" type="submit" value="Submit">
+    </form>
 </div>
 </div>
 </body>
