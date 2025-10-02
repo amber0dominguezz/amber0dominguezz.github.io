@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Metrics</title>
+    <link href="https://fonts.googleapis.com/css?family=Baumans" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Baumans', cursive;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .slider-container {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .slider-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .value-display {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        /* Fixed side percentage box */
+        .risk-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 220px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            padding: 16px 18px;
+            border: 1px solid #e8e8e8;
+        }
+        .risk-title {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            margin: 0 0 8px 0;
+        }
+        .risk-value {
+            font-size: 36px;
+            line-height: 1;
+            color: #111;
+            text-align: right;
+        }
+        .risk-help {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personal Metrics Tracker</h1>
+
+    <aside class="risk-box" aria-live="polite">
+        <div class="risk-title">Likelihood of dissociation</div>
+        <div class="risk-value"><span id="riskPercent">0</span>%</div>
+        <div class="risk-help">Based on busy, comfort, and food sliders</div>
+    </aside>
+    
+    <div class="slider-container">
+        <div class="slider-title">How busy I am</div>
+        <input type="range" min="1" max="10" value="5" class="slider" id="busySlider">
+        <div class="value-display">Value: <span id="busyValue">5</span>/10</div>
+    </div>
+    
+    <div class="slider-container">
+        <div class="slider-title">Comfort of my clothing</div>
+        <input type="range" min="1" max="10" value="5" class="slider" id="comfortSlider">
+        <div class="value-display">Value: <span id="comfortValue">5</span>/10</div>
+    </div>
+    
+    <div class="slider-container">
+        <div class="slider-title">How much I've ate</div>
+        <input type="range" min="1" max="10" value="5" class="slider" id="foodSlider">
+        <div class="value-display">Value: <span id="foodValue">5</span>/10</div>
+    </div>
+
+    <script>
+        function clamp(value, min, max) {
+            return Math.max(min, Math.min(max, value));
+        }
+
+        function computeRiskPercent(busy, comfort, food) {
+            // Normalize each slider to 0..1 where 1 means higher likelihood
+            const busyNorm = (busy - 1) / 9;           // higher busy -> higher risk
+            const comfortNorm = (10 - comfort) / 9;    // lower comfort -> higher risk
+            const foodNorm = (10 - food) / 9;          // less food -> higher risk
+
+            // Weights (sum to 1)
+            const wBusy = 0.5;
+            const wComfort = 0.3;
+            const wFood = 0.2;
+
+            const score = clamp(
+                wBusy * busyNorm +
+                wComfort * comfortNorm +
+                wFood * foodNorm,
+                0, 1
+            );
+            return Math.round(score * 100);
+        }
+
+        function updateDisplays() {
+            const busy = Number(document.getElementById('busySlider').value);
+            const comfort = Number(document.getElementById('comfortSlider').value);
+            const food = Number(document.getElementById('foodSlider').value);
+
+            document.getElementById('busyValue').textContent = busy;
+            document.getElementById('comfortValue').textContent = comfort;
+            document.getElementById('foodValue').textContent = food;
+
+            const percent = computeRiskPercent(busy, comfort, food);
+            document.getElementById('riskPercent').textContent = String(percent);
+        }
+
+        // Wire up listeners
+        document.getElementById('busySlider').addEventListener('input', updateDisplays);
+        document.getElementById('comfortSlider').addEventListener('input', updateDisplays);
+        document.getElementById('foodSlider').addEventListener('input', updateDisplays);
+
+        // Initialize display
+        updateDisplays();
+    </script>
+</body>
+</html>
