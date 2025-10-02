@@ -230,10 +230,10 @@
 
         <div class="right-column video-panel">
             <div class="video-frame">
-                <video id="vid2" autoplay muted loop playsinline>
+                <video id="vid2" autoplay muted loop playsinline preload="auto">
                     <source src="../images/vidav1.mp4" type="video/mp4">
                 </video>
-                <video id="vid1" autoplay muted loop playsinline>
+                <video id="vid1" autoplay muted loop playsinline preload="auto">
                     <source src="../images/vidav2.mp4" type="video/mp4">
                 </video>
             </div>
@@ -295,6 +295,50 @@
 
         // Initialize display
         updateDisplays();
+    </script>
+    <script>
+        (function () {
+            var videos = document.querySelectorAll('video');
+            if (!videos || videos.length === 0) return;
+
+            function tryPlay(video) {
+                if (!video) return;
+                video.muted = true; // ensure autoplay works on mobile/iOS
+                var p = video.play();
+                if (p && typeof p.then === 'function') {
+                    p.catch(function () {
+                        video.muted = true;
+                        try { video.play(); } catch (e) {}
+                    });
+                }
+            }
+
+            videos.forEach(function (v) {
+                v.setAttribute('preload', 'auto');
+                v.muted = true;
+                // Some browsers require playsInline property in addition to attribute
+                try { v.playsInline = true; } catch (e) {}
+
+                if (v.readyState >= 3) {
+                    tryPlay(v);
+                } else {
+                    v.addEventListener('canplaythrough', function onReady() {
+                        v.removeEventListener('canplaythrough', onReady);
+                        tryPlay(v);
+                    });
+                }
+            });
+
+            function retryAll() {
+                videos.forEach(function (v) { if (v.paused) tryPlay(v); });
+            }
+
+            window.addEventListener('load', retryAll);
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'visible') retryAll();
+            });
+            window.addEventListener('focus', retryAll);
+        })();
     </script>
 </body>
 </html>
