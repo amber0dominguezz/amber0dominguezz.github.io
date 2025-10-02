@@ -179,9 +179,7 @@
             }
         }
 
-        /* (Removed comfort-row styles; using two-column layout for uniform slider widths) */
-
-        /* Page background image layer at 70% opacity */
+    
         .page-bg {
             position: fixed;
             top: 0;
@@ -249,12 +247,10 @@
         }
 
         function computeRiskPercent(busy, comfort, food) {
-            // Normalize each slider to 0..1 where 1 means higher likelihood
             const busyNorm = (busy - 1) / 9;           // higher busy -> higher risk
             const comfortNorm = (10 - comfort) / 9;    // lower comfort -> higher risk
             const foodNorm = (10 - food) / 9;          // less food -> higher risk
 
-            // Weights (sum to 1)
             const wBusy = 0.5;
             const wComfort = 0.3;
             const wFood = 0.2;
