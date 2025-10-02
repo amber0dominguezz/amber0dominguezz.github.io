@@ -8,10 +8,10 @@
     <style>
         body {
             font-family: 'Baumans', cursive;
-            max-width: 600px;
+            max-width: 1400px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: transparent;
         }
         
         .slider-container {
@@ -66,7 +66,7 @@
         
         h1 {
             text-align: center;
-            color: #333;
+            color: #fff;
             margin-bottom: 40px;
         }
 
@@ -99,10 +99,83 @@
             font-size: 12px;
             color: #666;
         }
+
+        /* Video panel */
+        .video-panel {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-frame {
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            background: #000;
+        }
+        .video-frame video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-caption {
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        /* Two-column layout for sliders and video */
+        .layout {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .left-column {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .right-column {
+            flex: 1 1 0;
+            min-width: 280px;
+            max-width: 1100px;
+        }
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+            .right-column {
+                max-width: 100%;
+            }
+        }
+
+        /* (Removed comfort-row styles; using two-column layout for uniform slider widths) */
+
+        /* Page background image layer at 70% opacity */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../images/back1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            display: block;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-    <h1>Personal Metrics Tracker</h1>
+    <div class="page-bg" aria-hidden="true"></div>
+    <h1>How likely am I to experience derealization?</h1>
 
     <aside class="risk-box" aria-live="polite">
         <div class="risk-title">Likelihood of dissociation</div>
@@ -110,22 +183,38 @@
         <div class="risk-help">Based on busy, comfort, and food sliders</div>
     </aside>
     
-    <div class="slider-container">
-        <div class="slider-title">How busy I am</div>
-        <input type="range" min="1" max="10" value="5" class="slider" id="busySlider">
-        <div class="value-display">Value: <span id="busyValue">5</span>/10</div>
-    </div>
-    
-    <div class="slider-container">
-        <div class="slider-title">Comfort of my clothing</div>
-        <input type="range" min="1" max="10" value="5" class="slider" id="comfortSlider">
-        <div class="value-display">Value: <span id="comfortValue">5</span>/10</div>
-    </div>
-    
-    <div class="slider-container">
-        <div class="slider-title">How much I've ate</div>
-        <input type="range" min="1" max="10" value="5" class="slider" id="foodSlider">
-        <div class="value-display">Value: <span id="foodValue">5</span>/10</div>
+    <div class="layout">
+        <div class="left-column">
+            <div class="slider-container">
+                <div class="slider-title">How busy I am</div>
+                <input type="range" min="1" max="10" value="5" class="slider" id="busySlider">
+                <div class="value-display">Value: <span id="busyValue">5</span>/10</div>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-title">Comfort of my clothing</div>
+                <input type="range" min="1" max="10" value="5" class="slider" id="comfortSlider">
+                <div class="value-display">Value: <span id="comfortValue">5</span>/10</div>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-title">How much I've ate</div>
+                <input type="range" min="1" max="10" value="5" class="slider" id="foodSlider">
+                <div class="value-display">Value: <span id="foodValue">5</span>/10</div>
+            </div>
+        </div>
+
+        <div class="right-column video-panel">
+            <div class="video-frame">
+                <video id="vid2" autoplay muted loop playsinline>
+                    <source src="../images/vidav1.mp4" type="video/mp4">
+                </video>
+                <video id="vid1" autoplay muted loop playsinline style="display:none">
+                    <source src="../images/vidav2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-caption">purple is good!</div>
+        </div>
     </div>
 
     <script>
@@ -164,6 +253,13 @@
 
             const percent = computeRiskPercent(busy, comfort, food);
             document.getElementById('riskPercent').textContent = String(percent);
+
+            // Toggle videos based on threshold
+            const showVid2 = percent >= 50;
+            const v1 = document.getElementById('vid1');
+            const v2 = document.getElementById('vid2');
+            v1.style.display = showVid2 ? 'none' : 'block';
+            v2.style.display = showVid2 ? 'block' : 'none';
         }
 
         // Wire up listeners
