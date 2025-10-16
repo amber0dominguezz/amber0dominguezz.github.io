@@ -217,5 +217,62 @@
       });
     });
   </script>
+
+  <!-- Particle Cursor Effect -->
+<canvas id="particle-canvas"></canvas>
+<script>
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  // Resize canvas to fill window
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.position = 'fixed';
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = 9999;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // Particle constructor
+  function Particle(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = Math.random() * 2 + 1;
+    this.alpha = 1;
+    this.dx = (Math.random() - 0.5) * 1.5;
+    this.dy = (Math.random() - 0.5) * 1.5;
+  }
+
+  // Mouse move event
+  document.addEventListener('mousemove', function(e) {
+    for (let i = 0; i < 5; i++) { // Small amount of particles
+      particles.push(new Particle(e.clientX, e.clientY));
+    }
+  });
+
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.x += p.dx;
+      p.y += p.dy;
+      p.alpha -= 0.02;
+      ctx.globalAlpha = p.alpha;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      if (p.alpha <= 0) particles.splice(i, 1);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
 </body>
 </html>
