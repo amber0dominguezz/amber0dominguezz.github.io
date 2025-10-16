@@ -218,61 +218,63 @@
     });
   </script>
 
-  <!-- Particle Cursor Effect -->
-<canvas id="particle-canvas"></canvas>
 <script>
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
+// === Cursor Particle Effect ===
+const canvas = document.createElement('canvas');
+canvas.style.position = 'fixed';
+canvas.style.left = 0;
+canvas.style.top = 0;
+canvas.style.pointerEvents = 'none';
+canvas.style.zIndex = 1000;
+document.body.appendChild(canvas);
 
-  // Resize canvas to fill window
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    canvas.style.position = 'fixed';
-    canvas.style.top = 0;
-    canvas.style.left = 0;
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = 9999;
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
 
-  // Particle constructor
-  function Particle(x, y) {
-    this.x = x;
-    this.y = y;
-    this.radius = Math.random() * 2 + 1;
-    this.alpha = 1;
-    this.dx = (Math.random() - 0.5) * 1.5;
-    this.dy = (Math.random() - 0.5) * 1.5;
-  }
+let particles = [];
+let lastX = null, lastY = null;
 
-  // Mouse move event
-  document.addEventListener('mousemove', function(e) {
-    for (let i = 0; i < 5; i++) { // Small amount of particles
-      particles.push(new Particle(e.clientX, e.clientY));
+document.addEventListener('mousemove', e => {
+  if (lastX !== null && lastY !== null) {
+    for (let i = 0; i < 1; i++) { // number of particles per move
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 2 + 1;
+      particles.push({
+        x: e.clientX,
+        y: e.clientY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        alpha: 1,
+        radius: Math.random() * 2 + 1,
+        color: `rgba(0,0,0,1)` // black color
+      });
     }
-  });
-
-  // Animation loop
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((p, i) => {
-      p.x += p.dx;
-      p.y += p.dy;
-      p.alpha -= 0.02;
-      ctx.globalAlpha = p.alpha;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = '#fff';
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      if (p.alpha <= 0) particles.splice(i, 1);
-    });
-    requestAnimationFrame(animate);
   }
-  animate();
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+
+function animate() {
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.alpha -= 0.025;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = p.color.replace('1)', p.alpha + ')');
+    ctx.fill();
+  });
+  particles = particles.filter(p => p.alpha > 0);
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
+ 
 </body>
 </html>
