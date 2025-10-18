@@ -241,8 +241,8 @@ let lastX = null, lastY = null;
 document.addEventListener('mousemove', e => {
   if (lastX !== null && lastY !== null) {
     for (let i = 0; i < 1; i++) { // number of particles per move
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 2 + 1;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 1 + 0.3; // slower speed
       particles.push({
         x: e.clientX,
         y: e.clientY,
@@ -250,7 +250,7 @@ document.addEventListener('mousemove', e => {
         vy: Math.sin(angle) * speed,
         alpha: 1,
         radius: Math.random() * 2 + 1,
-        color: `rgba(0,0,0,1)` // black color
+          color: `rgba(255,255,255,1)` // white color
       });
     }
   }
