@@ -12,8 +12,10 @@
   <style>
     /* Page-scoped iframe centering for finalgame.htm */
     .iframe-center {
+      /* CSS variable controls horizontal visual offset. Positive -> right, Negative -> left */
+      --iframe-offset: 250px; /* adjust this value to push the iframe left (negative) or right (positive) */
       display: flex;
-      justify-content: center; /* center horizontally within the content area */
+      justify-content: center; /* center horizontally within the content area before offset */
       align-items: center;
       margin: 20px 0;
       width: 100%;
@@ -27,10 +29,18 @@
       height: 800px;
       border: none;
       display: block;
+      transform: translateX(var(--iframe-offset));
+      transition: transform 200ms ease; /* smooth when changing the variable */
     }
 
     @media (max-width: 768px) {
-      .iframe-center iframe { width: 100%; height: 60vh; }
+      /* Remove offset on small screens so iframe doesn't go off-screen */
+      .iframe-center { --iframe-offset: 0px; }
+      .iframe-center iframe {
+        width: 100%;
+        height: 60vh;
+        transform: translateX(var(--iframe-offset));
+      }
     }
   </style>
 </head>
