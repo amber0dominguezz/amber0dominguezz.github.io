@@ -10,37 +10,26 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="/images/logo.png">
   <style>
-    /* Page-scoped iframe centering for finalgame.htm */
-    .iframe-center {
-      /* CSS variable controls horizontal visual offset. Positive -> right, Negative -> left */
-      --iframe-offset: 270px; /* adjust this value to push the iframe left (negative) or right (positive) */
-      display: flex;
-      justify-content: center; /* center horizontally within the content area before offset */
-      align-items: center;
-      margin: 20px 0;
-      width: 100%;
+    /* Generic iframe centering inside .content */
+    .content {
+      --iframe-offset: 0px; /* common variable to nudge iframe horizontally */
+    }
+
+    .content iframe {
+      display: block;
+      width: 1200px; /* original width */
+      height: 800px; /* original height */
+      max-width: 100%;
+      margin: 20px auto; /* vertical breathing room and centered horizontally */
+      border: none;
+      transform: translateX(var(--iframe-offset));
+      transition: transform 200ms ease;
       box-sizing: border-box;
     }
 
-    .iframe-center iframe {
-      width: auto;
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 800px;
-      border: none;
-      display: block;
-      transform: translateX(var(--iframe-offset));
-      transition: transform 200ms ease; /* smooth when changing the variable */
-    }
-
     @media (max-width: 768px) {
-      /* Remove offset on small screens so iframe doesn't go off-screen */
-      .iframe-center { --iframe-offset: 0px; }
-      .iframe-center iframe {
-        width: 100%;
-        height: 60vh;
-        transform: translateX(var(--iframe-offset));
-      }
+      .content { --iframe-offset: 0px; }
+      .content iframe { width: 100%; height: 60vh; transform: translateX(var(--iframe-offset)); }
     }
   </style>
 </head>
@@ -58,17 +47,13 @@
 
 <h1 class="center-text">Nose Chase Game</h1>
 
-<p style="font-size:130%;">I made this game piece using Processing, VS Code, and P5.js. Using your devices camera and a face tracker, you play a ball chasing game with your nose and go through four levels. Each level gets progressively harder until you win.</p>
-
-<div class="iframe-center">
+<p style="font-size:130%">I made this game piece using Processing, VS Code, and P5.js. Using your devices camera and a face tracker, you play a ball chasing game with your nose and go through four levels. Each level gets progressively harder until you win.</p>
 
 <iframe src="nose/index.html" style="height:800px;width:1200px;border:none;" title="iframe game"></iframe>
 
-</div>
-
 <p>Here is the current code.</p>
 
-</div>
+ </div>
 <div style="color: white; padding: 20px; border-radius: 5px; margin-top: 20px; margin-left: 200px;">
 <pre> 
   let x1, y1;
