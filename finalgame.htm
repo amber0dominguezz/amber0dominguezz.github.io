@@ -8,6 +8,31 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet'>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/images/logo.png">
+  <style>
+    /* Page-scoped iframe centering for finalgame.htm */
+    .iframe-center {
+      display: flex;
+      justify-content: center; /* center horizontally within the content area */
+      align-items: center;
+      margin: 20px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .iframe-center iframe {
+      width: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 800px;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .iframe-center iframe { width: 100%; height: 60vh; }
+    }
+  </style>
 </head>
 <body class="theme-baumans">
 <div class="container-fluid">
@@ -19,14 +44,17 @@
   </div>
   </div>
 
-    <div class="content">
+  <div class="content center-page">
 
 <h1 class="center-text">Nose Chase Game</h1>
 
 <p style="font-size:130%;">I made this game piece using Processing, VS Code, and P5.js. Using your devices camera and a face tracker, you play a ball chasing game with your nose and go through four levels. Each level gets progressively harder until you win.</p>
 
+<div class="iframe-center">
 
 <iframe src="nose/index.html" style="height:800px;width:1200px;border:none;" title="iframe game"></iframe>
+
+</div>
 
 <p>Here is the current code.</p>
 
