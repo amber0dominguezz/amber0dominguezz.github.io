@@ -106,6 +106,39 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
   }
 
+  /* Hover / focus effect: pop out slightly */
+  .image-column figure {
+    display: inline-block;
+    margin: 0;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    will-change: transform;
+  }
+
+  .image-column figure img {
+    display: block;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    transform-origin: center center;
+    cursor: pointer; /* indicate clickable images */
+  }
+
+  .image-column figure:hover,
+  .image-column figure:focus-within {
+    transform: translateY(-6px) scale(1.04);
+    z-index: 2; /* lift above nearby elements */
+  }
+
+  .image-column figure:hover img,
+  .image-column figure:focus-within img {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  }
+
+  /* Ensure keyboard users can see focus */
+  .image-column a:focus {
+    outline: 3px solid rgba(255,255,255,0.15);
+    outline-offset: 4px;
+  }
+
   .categories {
     margin-top: 20px;
   }
