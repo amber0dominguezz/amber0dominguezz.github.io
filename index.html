@@ -19,6 +19,18 @@
     background-size: cover; 
   }
 
+  /* Page-scoped custom cursor rules (index.html only) */
+  /* Use .cur first if available, then PNG with hotspot coords, then fall back to pointer/auto. */
+  /* Disabled on touch devices via media query. */
+  @media (hover: hover) and (pointer: fine) {
+    /* set default page cursor */
+    body.index-cursor, body { cursor: url('images/cursor1.png') 16 16, auto; }
+
+    /* interactive elements get the hover cursor */
+    a, button, .image-column img, .image-grid img, figure img { cursor: url('images/cursor1.png') 16 16, pointer; }
+    a:hover, button:hover, .image-column img:hover, .image-grid img:hover, figure:hover img { cursor: url('images/cursor2.png') 16 16, pointer; }
+  }
+
 /* Fixed sidenav, full height */
 .sidenav {
     height: 100%;

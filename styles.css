@@ -99,6 +99,20 @@ body.theme-3dprint {
 .image-column { display: flex; flex-wrap: wrap; gap: 20px; }
 .image-column img { width: 200px; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 
+/* Custom cursor for images and hover state */
+.custom-pointer {
+  cursor: url("https://amber0dominguezz.github.io/images/cursor1.png"), pointer;
+}
+
+.custom-auto {
+  cursor: url("https://amber0dominguezz.github.io/images/cursor2.png"), auto; 
+}
+
+.resize-image {
+  width: 600px;
+  height: auto;
+}
+
 /* Forms on contact */
 form.ad-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin-left: 0; }
 label.ad-label { font-size: 18px; margin-bottom: 5px; }
@@ -129,3 +143,14 @@ video.ad-left { display: block; float: left; margin: 0; }
   .content, .content.center-page { margin-left: 80px; }
   .content.center-page { padding: 12px; }
 }
+
+/* ===== TEMPORARY TEST CURSOR RULES - REMOVE AFTER DEBUGGING ===== */
+/* Forces cursor image usage and uses .cur fallback where available. */
+.image-column img, .image-grid img, figure img {
+  cursor: url('/images/cursor1.cur'), url('/images/cursor1.png') 16 16, url('images/cursor1.png') 16 16, auto !important;
+}
+.image-column img:hover, .image-grid img:hover, figure:hover img, a:hover {
+  cursor: url('/images/cursor2.cur'), url('/images/cursor2.png') 16 16, url('images/cursor2.png') 16 16, pointer !important;
+}
+
+/* End temporary test rules */
